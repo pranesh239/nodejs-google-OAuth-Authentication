@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/styles/style.css")
+        title Document
+    body
+        <!-- Image and text -->
+        <nav class="navbar navbar-dark navbar-expand-lg bg-success justify-content-start">
+            <a class="navbar-brand" href="#">
+                |   Experience to live
+            </a>
+            if user
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#profileAction" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                #profileAction.collapse.navbar-collapse
+                    ul.ml-auto.navbar-nav
+                        <li class="nav-item dropdown ml-md-auto">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    |   #{user.email}
+                                    </a>
+                                    <div style="position:absolute; width:100%" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/auth/logout">Logout</a>
+                                    </div>
+                        </li>
+        </nav>
+        .bg-dark
+            .container
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link public-experience text-white" href="/stories">
+                            !=  h.serveSVG('public')
+                            |   Public Experience
+                        </a>
+                    </li>
+                    if user
+                        <li class="nav-item">
+                            <a class="nav-link public-experience text-white" href="/stories/my">
+                                !=  h.serveSVG('myProfile')
+                                |   My Experiences
+                            </a>
+                        </li>
+                </ul>
+        block content
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

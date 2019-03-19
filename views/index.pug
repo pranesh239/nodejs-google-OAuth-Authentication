@@ -1,0 +1,16 @@
+extends layout
+
+block content
+            .jumbotron.bg-light.rounded-0
+                .container
+                    if !user
+                        .display-5
+                            span Sign in to live your life worthy
+                            br
+                            a.btn.btn-sm.btn-danger.mt-3.text-uppercase(href="/auth/google") Sign in with Google
+                    else
+                        .text-success
+                            .display-4
+                                | Welcome #{user.firstName},
+                            p.lead
+                                | Read the experiences of others to improve your life
