@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+    .container.mt-3
+        .row
+            .col-md-8.d-flex.flex-column
+                .card.p-3.w-100.mb-3
+                    span.text-sm.mb-3= h.dateFormat(story.date, 'DD/MM/YYYY')
+                    h4.mb-3= story.title
+                    != story.body
+                .p-3
+                    if user==null
+                        p.lead.text-center
+                            |   You are not Logged in, please&nbsp;
+                            a(href="/auth/google") Login
+                            |   to continue
+                    else
+                        form.mb-3(action=`/stories/comment/${story.id}` method="post")
+                            .form-group
+                                label(for="comment") Your comment
+                                textarea#comment.form-control(name="comment")
+                            button.btn.btn-sm.btn-success(type="submit" role="button") Submit
+                        div
+                            if story.comments.length<=0
+                                p.lead.text-center.p-3
+                                    |   No comments
+                            else
+                                p.lead.text-center
+                                    |   Comments
+                                each comment in story.comments
+                                    .border-top.p-3
+                                        .mb-2.font-weight-bold
+                                            img.postedUserImage.mr-1(src=comment.commentUser.image)
+                                            |   #{comment.commentUser.firstName}
+                                            small.font-italic
+                                                |   #{h.dateFormat(story.date,'MMMM Do YYYY')}
+                                        p
+                                            |   #{comment.commentBody}
+
+            .col-md-4
+                .card.p-3.text-center
+                    p.lead.text-center= story.user.firstName+' '+story.user.lastName
+                    img.d-block.mx-auto.showUserImage(src=story.user.image)
+                    a.text-success(href=`/stories/user/${story.user.id}`) More from this user

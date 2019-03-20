@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+    //- !=  h.pre(story)
+    .container-fluid
+        .row.my-3
+            .col-md-6.mx-auto
+                form(action=`/stories/${story.id}?_method=PUT` method="post")
+                    input(type="hidden" name="_method" value="PUT")
+                    <div class="form-group">
+                        <label for="title">Post title</label>
+                        input.form-control#title(type="text", name="title", value=story.title)
+                    </div>
+                    <div class="form-group">
+                        <label for="visibility">Status</label>
+                        select(name="status", class="form-control", id="visibility", value=story.status)
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                            <option value="unpublished">Unpublished</option>
+                    </div>
+                    .form-group
+                        label(for="body")
+                        textarea.form-control#body(name="body", cols="30", rows="10")= story.body
+                    <div class="form-group form-check">
+                        input(checked=story.allowComments type="checkbox" name="allowComments" class="form-check-input" id="comments")
+                        <label class="form-check-label" for="comments">Allow comments</label>
+                    </div>
+                    <button type="submit" value="submit" class="btn btn-primary">Post</button>

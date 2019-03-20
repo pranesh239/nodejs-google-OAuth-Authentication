@@ -8,12 +8,12 @@ router.get('/google', passport.authenticate('google',{
 
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),(req, res) => {
-    res.redirect('/dashboard');
+    res.redirect('/stories');
 });
 
 router.get('/logout',(req, res) => {
     req.logout();
-    res.redirect('/dashboard');
+    res.redirect('/');
 });
 
 router.get('/verify',(req, res) => {

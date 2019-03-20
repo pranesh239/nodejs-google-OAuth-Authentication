@@ -1,6 +1,7 @@
 extends layout
-
+include partials/_mixins
 block content
+            +storiesNavbar
             .jumbotron.bg-light.rounded-0
                 .container
                     if !user

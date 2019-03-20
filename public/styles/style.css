@@ -1,3 +1,85 @@
+body{
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;
+}
+footer{
+    font-size: 14px
+}
+
+.text-sm{
+    font-size: 12px;
+}
+
+.publicCard p.card-text {
+    height: 60px;
+}
+
+.profile__header{
+    filter: blur(12px) saturate(0.4);
+  -webkit-filter: blur(12px) saturate(0.4);
+  background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    min-height: 200px;
+    position: relative;
+    transform: scale(1.2)
+
+}
+.profile__header::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    content: '';
+}
+.profile{
+    position: relative;
+}
+.profile__cover{
+    position: relative;
+    overflow: hidden;
+}
+
+.profile__primary{
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translate(-50%,50%);
+    /* width: 100%; */
+}
+
+.profile__image{
+    width: 150px;
+    border-radius: 50%;
+}
+
+img, .prevent-select{
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+
+}
+
+
+.postedUserImage{
+    width: 32px;
+    border-radius: 50%;
+}
+
+.showUserImage{
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+
+
 .public-experience svg{
     width: 20px;
     margin-right: 8px;

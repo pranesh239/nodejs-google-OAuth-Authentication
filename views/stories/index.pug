@@ -1,0 +1,9 @@
+extends ../layout
+include ../partials/_mixins
+block content
+    if stories
+        .container.mt-3
+            .row
+                each story in stories
+                    .col-md-3.mb-3
+                        +storyCard(story)

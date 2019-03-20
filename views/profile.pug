@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    //- != h.pre(stories)
+    //- != h.pre(user)
+    .container
+        .profile.mb-3
+            .profile__cover
+                .profile__header.p-3(style=`background-image: url(${user.image})`)
+            .profile__primary
+                img.profile__image(src=user.image)
+                p.lead.text-center.font-weight-bold.mt-3= user.firstName+' '+user.lastName
+        .card.p-3(style="margin-top:140px")
+            .row
+                .col-md-3
+                    .stat
+                        | Total stories = #{stories.length}

@@ -5,16 +5,21 @@ const passport = require('passport');
 const session = require('express-session');
 const cookie = require('cookie-parser');
 const path =require('path') ;
+const methodOverride = require('method-override');
 
 const key = require('./config/keys');
 const helper = require('./helper');
 
 const root = require('./routes/index');
 const auth = require('./routes/auth');
+const stories = require('./routes/stories');
 
 mongoose.connect(key.mongoURL, { useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log('Connected to DB'))
     .catch((err) => console.log(err));
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 app.use(express.static(path.join(__dirname,'public')))
 
@@ -31,6 +36,8 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.use(methodOverride('_method'))
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -42,6 +49,7 @@ app.use((req, res, next) => {
 
 app.use('/', root);
 app.use('/auth', auth);
+app.use('/stories', stories);
 
 // PORT ADDRESS AND CONNECTION
 const PORT = process.env.PORT || 5000;

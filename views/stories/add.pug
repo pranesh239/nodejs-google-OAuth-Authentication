@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+    .container-fluid
+        .row.my-3
+            .col-md-6.mx-auto
+                <form action="/stories" method="post">
+                    <div class="form-group">
+                        <label for="title">Post title</label>
+                        <input type="text" name="title" class="form-control" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="visibility">Status</label>
+                        <select name="status" class="form-control" id="visibility">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="unpublished">Unpublished</option>
+                        </select>
+                    </div>
+                    .form-group
+                        label(for="body")
+                        textarea.form-control#body(name="body", cols="30", rows="10")
+                    <div class="form-group form-check">
+                        <input type="checkbox" name="allowComments" class="form-check-input" id="comments">
+                        <label class="form-check-label" for="comments">Allow comments</label>
+                    </div>
+                    <button type="submit" value="submit" class="btn btn-primary">Post</button>
+                </form>
